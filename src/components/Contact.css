@@ -6,16 +6,27 @@
   text-align: center;
 }
 
+/* Big centered statement, sized like the other section headlines */
+.contact-heading {
+  margin-top: clamp(18px, 1.8vw, 34px);
+  font-size: var(--fs-h-service);
+  font-weight: 500;
+  line-height: 1.06;
+  color: var(--navy);
+}
+
 /* Figma: 30px, two centered lines */
 .contact-copy {
-  margin-top: clamp(18px, 1.8vw, 34px);
+  margin-top: clamp(14px, 1.4vw, 26px);
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
   font-size: var(--fs-body);
   line-height: 1.35;
   color: var(--navy);
 }
 
 .contact-cta-wrap {
-  position: relative;
   width: fit-content;
   margin: clamp(40px, 4.4vw, 85px) auto 0;
 }
@@ -32,39 +43,19 @@
   font-size: var(--fs-body);
   font-weight: 500;
   text-decoration: none;
+  gap: 18px;
   transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
               box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.contact-cta::after {
+  content: "";
+  width: 0.42em;
+  height: 0.42em;
+  background: currentColor;
+  transform: rotate(45deg);
 }
 .contact-cta:hover {
   transform: scale(1.02);
   box-shadow: 0 30px 70px rgba(6, 30, 51, 0.14);
   color: var(--navy);
-}
-
-/* Side link — Figma: to the panel's right, vertically centered */
-.contact-link {
-  position: absolute;
-  left: calc(100% + 44px);
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: var(--fs-body);
-  color: var(--navy);
-  text-decoration: underline;
-  text-underline-offset: 4px;
-  white-space: nowrap;
-}
-.contact-link:hover { color: var(--navy); opacity: 0.7; }
-
-@media (max-width: 1500px) {
-  .contact-link {
-    position: static;
-    display: inline-block;
-    transform: none;
-    margin-top: 26px;
-  }
-  .contact-cta-wrap {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
 }
