@@ -1,0 +1,70 @@
+/* ============ LET'S TALK ============ */
+
+.contact {
+  background: var(--blue-100);
+  padding: clamp(72px, 6.9vw, 133px) var(--page-pad) clamp(96px, 11.4vw, 219px);
+  text-align: center;
+}
+
+/* Figma: 30px, two centered lines */
+.contact-copy {
+  margin-top: clamp(18px, 1.8vw, 34px);
+  font-size: var(--fs-body);
+  line-height: 1.35;
+  color: var(--navy);
+}
+
+.contact-cta-wrap {
+  position: relative;
+  width: fit-content;
+  margin: clamp(40px, 4.4vw, 85px) auto 0;
+}
+
+/* Figma: 944×360 cream panel, sharp corners, 30px label */
+.contact-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: min(944px, 86vw);
+  height: clamp(160px, 18.75vw, 360px);
+  background: var(--cream);
+  color: var(--navy);
+  font-size: var(--fs-body);
+  font-weight: 500;
+  text-decoration: none;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.contact-cta:hover {
+  transform: scale(1.02);
+  box-shadow: 0 30px 70px rgba(6, 30, 51, 0.14);
+  color: var(--navy);
+}
+
+/* Side link — Figma: to the panel's right, vertically centered */
+.contact-link {
+  position: absolute;
+  left: calc(100% + 44px);
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: var(--fs-body);
+  color: var(--navy);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  white-space: nowrap;
+}
+.contact-link:hover { color: var(--navy); opacity: 0.7; }
+
+@media (max-width: 1500px) {
+  .contact-link {
+    position: static;
+    display: inline-block;
+    transform: none;
+    margin-top: 26px;
+  }
+  .contact-cta-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}

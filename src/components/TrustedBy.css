@@ -1,0 +1,38 @@
+/* ============ TRUSTED BY ============ */
+
+.trusted {
+  padding: clamp(56px, 6vw, 110px) 0 clamp(64px, 7vw, 130px);
+  text-align: center;
+}
+
+/* Figma: Geist 32px #606E7C */
+.trusted-copy {
+  font-family: var(--font-geist);
+  font-size: var(--fs-eyebrow);
+  color: var(--gray-5);
+  padding: 0 var(--page-pad);
+}
+
+.trusted-marquee {
+  margin-top: clamp(32px, 3.6vw, 70px);
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+}
+
+.trusted-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+.trusted-strip {
+  display: flex;
+  align-items: center;
+  gap: clamp(40px, 5vw, 96px);
+  padding-right: clamp(40px, 5vw, 96px);
+}
+.trusted-strip img {
+  filter: grayscale(1);
+  opacity: 0.75;
+  height: auto;
+}

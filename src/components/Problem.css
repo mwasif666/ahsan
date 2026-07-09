@@ -1,0 +1,53 @@
+/* ============ THE PROBLEM ============ */
+
+.problem {
+  padding: clamp(64px, 8vw, 156px) var(--page-pad) clamp(56px, 5vw, 96px);
+}
+
+/* Three statements, each on a single line (middle one indented) */
+.problem-lines {
+  margin-top: clamp(32px, 3.85vw, 74px);
+}
+.problem-line {
+  width: fit-content;
+  font-size: var(--fs-problem);
+  font-weight: 500;
+  line-height: 1.15;
+  white-space: nowrap;
+  margin-bottom: clamp(18px, 2.34vw, 45px);
+  /* Text is painted by this gradient (navy on the left melting into
+     light blue on the right). GSAP slides background-position from
+     100% → 0% on scroll, so the fade always sits on the right edge. */
+  background-image: linear-gradient(
+    90deg,
+    var(--navy) 0%,
+    var(--navy) 42%,
+    #b7d5f0 62%,
+    #b7d5f0 100%
+  );
+  background-size: 250% 100%;
+  background-position: 100% 0;
+  background-repeat: no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+.problem-line:last-child {
+  margin-bottom: 0;
+}
+
+/* Middle statement pushed right (Figma x497 vs x78) */
+.problem-line.is-offset {
+  margin-left: min(22.7%, 419px);
+}
+
+@media (max-width: 767px) {
+  .problem-line {
+    white-space: normal;
+    line-height: 1.15;
+  }
+  .problem-line.is-offset {
+    margin-left: 10%;
+  }
+}

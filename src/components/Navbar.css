@@ -1,0 +1,57 @@
+/* ============ NAVBAR ============ */
+
+.site-nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: clamp(14px, 2.2vw, 42px) clamp(16px, 2.9vw, 56px);
+}
+
+/* Centered "THE PROBLEM SOLVER" label — #657688, letterspaced,
+   smaller than the section eyebrows per the latest design */
+.site-nav .nav-label {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  margin: 0;
+  font-size: var(--fs-nav);
+}
+
+/* "Get in Touch" — navy bg, #DFEBF3 Geist, radius 6 */
+.nav-cta {
+  background: var(--navy);
+  color: var(--blue-100);
+  font-family: var(--font-alt);
+  font-weight: 400;
+  font-size: var(--fs-nav); /* 24px at 1920 */
+  line-height: 1;
+  padding: clamp(7px, 0.65vw, 12.5px) clamp(12px, 1.3vw, 25px);
+  border-radius: 6px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  will-change: transform;
+}
+.nav-cta:hover {
+  background: #0d3252;
+  color: var(--blue-100);
+  transform: translateY(-2px);
+}
+.nav-cta:active {
+  transform: translateY(0);
+}
+.nav-cta:focus-visible {
+  outline: 2px solid var(--navy);
+  outline-offset: 3px;
+}
+
+@media (max-width: 575px) {
+  .site-nav .nav-label {
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    text-indent: 0.32em;
+    left: clamp(16px, 4vw, 24px);
+    transform: none;
+  }
+}

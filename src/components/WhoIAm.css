@@ -1,0 +1,134 @@
+/* ============ WHO I AM (+ STATS) ============ */
+
+/* Figma: solid #DFEBF3 for the top ~55% of the frame, then a fade back to
+   the cream page background. */
+.who {
+  background: linear-gradient(
+    180deg,
+    var(--blue-100) 0%,
+    var(--blue-100) 55%,
+    var(--cream) 100%
+  );
+}
+
+/* The Figma frame is 1920×1713 — desktop keeps that canvas so every child
+   can sit at its exact percentage coordinate. */
+.who-canvas {
+  position: relative;
+  aspect-ratio: 1920 / 1713;
+}
+
+/* --- Vertical hairlines (2px #7D858D, stepped depths) --- */
+.who-line {
+  position: absolute;
+  top: 0;
+  width: 2px;
+  background: var(--hairline);
+}
+.l1 { left: 15.65%; height: 76.6%; }
+.l2 { left: 38.70%; height: 79.8%; }
+.l3 { left: 61.75%; height: 90.9%; }
+.l4 { left: 84.80%; height: 85.9%; }
+
+/* --- Photo slots (Figma: 296×296 #D9D9D9, radius 4) --- */
+.who-media { display: contents; } /* desktop: children position themselves */
+.who-img {
+  position: absolute;
+  width: 15.42%;
+  aspect-ratio: 1;
+  background: #d9d9d9 center / cover no-repeat;
+  border-radius: 4px;
+}
+.i1 { left: 0;      top: 2.57%; }
+.i2 { left: 15.46%; top: 22.7%; }
+.i3 { left: 61.54%; top: 4.44%; }
+.i4 { left: 84.58%; top: 22.34%; }
+
+/* --- Copy blocks (Figma: 30px/30, 408px wide) --- */
+.who-eyebrow {
+  position: absolute;
+  left: 39.17%;
+  top: 11.5%;
+  text-align: left;
+  text-indent: 0;
+}
+.who-copy {
+  position: absolute;
+  width: 21.25%;
+  font-size: var(--fs-body);
+  line-height: 1.06;
+  color: var(--navy);
+}
+.copy-1 { left: 39.17%; top: 15.03%; }
+.copy-2 { left: 61.93%; top: 39.6%; }
+
+/* --- Staircase stats (170px Inter 900 + 40px uppercase labels) --- */
+.who-stats { display: contents; }
+.who-stat {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+}
+.stat-1 { left: 17.06%; top: 54.94%; }
+.stat-2 { left: 38.92%; top: 64.11%; }
+.stat-3 { left: 63.96%; top: 76.36%; }
+
+.stat-num {
+  font-size: var(--fs-stat);
+  font-weight: 900;
+  line-height: 1;
+  color: var(--navy);
+}
+.stat-label {
+  font-size: var(--fs-label);
+  font-weight: 400;
+  text-transform: uppercase;
+  color: var(--navy);
+  margin-top: clamp(8px, 1.3vw, 26px);
+}
+/* Labels step right underneath their number, as drawn in Figma */
+.stat-1 .stat-label { margin-left: clamp(30px, 9.8vw, 188px); }
+.stat-2 .stat-label { margin-left: clamp(40px, 13.9vw, 267px); }
+
+/* ---------- Tablet / mobile: reflow the canvas ---------- */
+@media (max-width: 991px) {
+  .who-canvas {
+    aspect-ratio: auto;
+    padding: 64px var(--page-pad) 72px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+  .who-line { display: none; }
+
+  .who-eyebrow,
+  .who-copy,
+  .who-img,
+  .who-stat {
+    position: static;
+    width: auto;
+  }
+  .who-eyebrow { text-align: center; order: 1; }
+  .copy-1 { order: 2; }
+  .copy-2 { order: 3; }
+  .who-copy { max-width: 520px; line-height: 1.35; }
+
+  .who-media {
+    order: 4;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .who-img { aspect-ratio: 1; }
+
+  .who-stats {
+    order: 5;
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+    margin-top: 12px;
+  }
+  .stat-1 .stat-label,
+  .stat-2 .stat-label { margin-left: 0; }
+  .stat-label { margin-top: 4px; }
+}

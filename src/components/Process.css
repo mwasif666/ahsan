@@ -1,0 +1,109 @@
+/* ============ HOW I WORK ============ */
+
+.process {
+  padding: clamp(64px, 7vw, 130px) var(--page-pad) clamp(72px, 8vw, 150px);
+  text-align: center;
+}
+
+.process-wrap {
+  position: relative;
+  max-width: 1282px;
+  margin: 0 auto;
+  /* Figma: the vertical line starts ~110px above the grid */
+  padding-top: clamp(56px, 5.7vw, 110px);
+}
+
+/* Crosshair — kept above the hover washes so it never gets painted over */
+.process-line-v {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: #000;
+}
+.process-grid {
+  position: relative;
+}
+.process-line-h {
+  position: absolute;
+  z-index: 2;
+  left: 2.3%;
+  top: 50%;
+  width: 94.7%;
+  height: 1px;
+  background: #000;
+}
+
+.process-cell {
+  position: relative;
+  overflow: hidden;
+  min-height: clamp(280px, 22vw, 424px);
+  padding: clamp(28px, 3.1vw, 60px) clamp(26px, 3.6vw, 70px);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+/* Gradient washes (mirrored) — hidden until hover, then slide in from the
+   crosshair so each column's pair (Audit/Alignment, Strategy/Execution)
+   meets in the middle. */
+.process-cell::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0.55s ease;
+}
+.cell-a::before, .cell-c::before {
+  background: linear-gradient(145deg, var(--cream) 20%, var(--blue-sky) 100%);
+}
+.cell-b::before, .cell-d::before {
+  background: linear-gradient(215deg, var(--cream) 20%, var(--blue-sky) 100%);
+}
+.process-cell:hover::before { opacity: 1; }
+
+/* Figma: 45.48px / 500 titles, 31.5px #5A5A5A copy */
+.process-title {
+  position: relative;
+  z-index: 1;
+  font-size: var(--fs-process-title);
+  font-weight: 500;
+  color: var(--navy);
+}
+.process-desc {
+  position: relative;
+  z-index: 1;
+  margin-top: clamp(14px, 1.5vw, 28px);
+  max-width: 430px;
+  font-size: var(--fs-body-lg);
+  line-height: 1.2;
+  color: var(--gray-2);
+}
+
+/* Icon badge, top-right — exported pre-composed (navy circle + icon) from Figma */
+.process-badge {
+  position: absolute;
+  z-index: 1;
+  right: clamp(22px, 3vw, 58px);
+  width: clamp(52px, 3.85vw, 74px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+}
+.cell-a .process-badge, .cell-b .process-badge { top: clamp(40px, 4.5vw, 86px); }
+.cell-c .process-badge, .cell-d .process-badge { top: clamp(24px, 2.1vw, 40px); }
+
+@media (max-width: 991px) {
+  .process-line-v,
+  .process-line-h { display: none; }
+  .process-cell {
+    min-height: 0;
+    padding: 40px 22px;
+    border-top: 1px solid rgba(0, 0, 0, 0.35);
+  }
+  .col-12:first-child .process-cell { border-top: 0; }
+  .process-badge { top: 28px !important; }
+}

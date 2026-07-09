@@ -1,0 +1,24 @@
+/* ============ MY STORY ============ */
+
+.story {
+  padding: clamp(72px, 8vw, 150px) var(--page-pad);
+  text-align: center;
+}
+
+/* Figma: 54px/56, 1548px wide, centered */
+.story-copy {
+  max-width: 1548px;
+  margin: clamp(26px, 2.9vw, 56px) auto 0;
+  font-size: var(--fs-story);
+  font-weight: 500;
+  line-height: 1.04;
+  text-align: left;
+}
+.story-copy p + p {
+  margin-top: clamp(24px, 2.9vw, 56px);
+}
+
+/* Words start gray; GSAP scrubs them to navy */
+.story-word {
+  color: var(--gray-4);
+}

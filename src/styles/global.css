@@ -1,0 +1,125 @@
+/* ============================================================
+   GLOBAL DESIGN SYSTEM
+   Every value below is taken from the Figma export.
+   Change a token here and it propagates through the whole site.
+   ============================================================ */
+
+:root {
+  /* --- Colors (exact hex values from Figma) --- */
+  --cream: #f4f2eb;        /* page background */
+  --navy: #061e33;         /* primary text / dark surfaces */
+  --blue-100: #dfebf3;     /* section backgrounds, nav CTA text */
+  --blue-150: #dbeaf5;     /* hero gradient stop */
+  --blue-sky: #c1e1ff;     /* gradient accent */
+  --yellow: #f9ffbd;       /* hero gradient stop, SEO card */
+  --card: #fbfbfb;         /* light service cards, project glass */
+  --gray-1: #657688;       /* eyebrows */
+  --gray-2: #5a5a5a;       /* process descriptions, tag borders */
+  --gray-3: #5e5e5e;       /* tag text */
+  --gray-4: #999999;       /* story text (pre-reveal) */
+  --gray-5: #606e7c;       /* trusted-by line */
+  --hairline: #7d858d;     /* vertical rules in Who I Am */
+
+  /* --- Type --- */
+  --font-main: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-alt: 'Geist', 'Inter', sans-serif;
+
+  /* --- Layout --- */
+  --page-pad: clamp(16px, 4vw, 78px); /* 78px side padding at 1920 */
+
+  /* Fluid type scale: exact px at the 1920 design width, scaling down with
+     the viewport (px / 19.2 = vw). */
+  --fs-eyebrow: clamp(13px, 1.667vw, 32px);      /* 32 */
+  --fs-nav: clamp(11px, 1.25vw, 24px);           /* 24 — navbar label + CTA */
+  --fs-body: clamp(15px, 1.563vw, 30px);         /* 30 */
+  --fs-body-lg: clamp(16px, 1.64vw, 31.5px);     /* 31.5 */
+  --fs-sub: clamp(19px, 2.708vw, 52px);          /* 52 */
+  --fs-label: clamp(15px, 2.083vw, 40px);        /* 40 */
+  --fs-process-title: clamp(24px, 2.369vw, 45.5px); /* 45.48 */
+  --fs-story: clamp(22px, 2.813vw, 54px);        /* 54 */
+  --fs-h-service: clamp(30px, 3.646vw, 70px);    /* 70 */
+  --fs-problem: clamp(24px, 3.2vw, 61.5px);      /* sized so every line stays on one row */
+  --fs-projects-title: clamp(44px, 6.4vw, 123px);/* 122.91 */
+  --fs-stat: clamp(56px, 8.854vw, 170px);        /* 170 */
+  --fs-hero: clamp(46px, 8.8vw, 169px);          /* name spans ~86vw, ~7vw space each side */
+}
+
+/* --- Base --- */
+html {
+  scroll-behavior: smooth;
+}
+html,
+body {
+  overflow-x: hidden;
+}
+body {
+  background: var(--cream);
+  color: var(--navy);
+  font-family: var(--font-main);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+img {
+  max-width: 100%;
+  display: block;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+h1, h2, h3, h4, p {
+  margin: 0;
+}
+button {
+  font-family: inherit;
+}
+::selection {
+  background: var(--yellow);
+  color: var(--navy);
+}
+
+/* --- Shared pieces --- */
+
+/* Letter-spaced section eyebrows: "T H E  P R O B L E M" etc. */
+.eyebrow {
+  display: block;
+  color: var(--gray-1);
+  font-size: var(--fs-eyebrow);
+  font-weight: 500;
+  letter-spacing: 0.42em;
+  text-indent: 0.42em; /* optically re-centers letterspaced text */
+  text-transform: uppercase;
+  text-align: center;
+}
+.eyebrow--dark {
+  color: var(--navy);
+}
+
+/* Masked word-reveal used by RevealText (GSAP slides .rt-word up) */
+.rt-line {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding-bottom: 0.08em;   /* room for descenders inside the mask */
+  margin-bottom: -0.08em;
+}
+.rt-word {
+  display: inline-block;
+  will-change: transform;
+}
+
+/* Sections never hide content via CSS — GSAP `from()` tweens handle initial
+   states, so the page still renders fully if JS fails. */
+
+/* --- Accessibility: reduced motion --- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
