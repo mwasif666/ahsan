@@ -41,11 +41,25 @@
 }
 
 .project-media {
+  /* Rendered as a <button> for keyboard/click access — reset its chrome */
+  display: block;
+  width: 100%;
+  margin: 0;
+  border: none;
+  background: none;
+  font: inherit;
+  color: inherit;
+  -webkit-appearance: none;
+  appearance: none;
   position: relative;
   aspect-ratio: 832 / 400;
   border-radius: clamp(12px, 1.05vw, 20px);
   overflow: hidden;
   cursor: pointer;
+}
+.project-media:focus-visible {
+  outline: 3px solid var(--navy);
+  outline-offset: 3px;
 }
 .project-media img {
   width: 100%;
@@ -104,4 +118,136 @@
     transform: none;
   }
   .project-view { display: none; } /* no cursor on touch */
+}
+
+/* ============ PROJECT DETAIL MODAL ============ */
+/* Portaled to <body> (outside ScrollSmoother's transformed #smooth-content) so
+   position: fixed resolves against the viewport, not the transformed wrapper. */
+.project-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(16px, 3vw, 48px);
+}
+
+.project-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(6, 30, 51, 0.55);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+
+.project-modal-panel {
+  position: relative;
+  z-index: 1;
+  width: min(920px, 100%);
+  max-height: 90vh;
+  overflow-y: auto;
+  background: var(--cream);
+  border-radius: clamp(16px, 1.6vw, 28px);
+  box-shadow: 0 40px 100px rgba(6, 30, 51, 0.35);
+}
+
+.project-modal-close {
+  position: absolute;
+  top: clamp(12px, 1vw, 18px);
+  right: clamp(12px, 1vw, 18px);
+  z-index: 2;
+  width: clamp(38px, 3vw, 46px);
+  height: clamp(38px, 3vw, 46px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--navy);
+  font-size: clamp(22px, 1.7vw, 30px);
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 0.25s ease, transform 0.25s ease;
+}
+.project-modal-close:hover {
+  background: #ffffff;
+  transform: rotate(90deg);
+}
+
+.project-modal-media {
+  aspect-ratio: 832 / 400;
+  overflow: hidden;
+  border-radius: clamp(16px, 1.6vw, 28px) clamp(16px, 1.6vw, 28px) 0 0;
+}
+.project-modal-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.project-modal-body {
+  padding: clamp(22px, 2.6vw, 46px);
+}
+.project-modal-name {
+  font-size: var(--fs-sub);
+  font-weight: 500;
+  line-height: 1.05;
+  color: var(--navy);
+}
+.project-modal-tags {
+  margin-top: clamp(12px, 1.2vw, 20px);
+  padding: 0;
+}
+.project-modal-desc {
+  margin-top: clamp(14px, 1.4vw, 24px);
+  max-width: 62ch;
+  font-size: var(--fs-body);
+  line-height: 1.5;
+  color: var(--gray-2);
+}
+.project-modal-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(22px, 2.6vw, 52px);
+  margin: clamp(22px, 2.2vw, 36px) 0 0;
+  padding-top: clamp(18px, 1.8vw, 30px);
+  border-top: 1px solid rgba(6, 30, 51, 0.12);
+}
+.project-modal-meta dt {
+  font-size: clamp(11px, 0.7vw, 13px);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gray-1);
+}
+.project-modal-meta dd {
+  margin: 6px 0 0;
+  font-size: clamp(14px, 1vw, 18px);
+  color: var(--navy);
+}
+.project-modal-link {
+  display: inline-block;
+  margin-top: clamp(20px, 2vw, 34px);
+  padding: clamp(10px, 0.9vw, 15px) clamp(20px, 1.8vw, 34px);
+  background: var(--navy);
+  color: var(--blue-100);
+  border-radius: 6px;
+  font-size: clamp(14px, 1vw, 18px);
+  transition: background-color 0.25s ease, transform 0.25s ease;
+}
+.project-modal-link:hover {
+  background: #0d3252;
+  transform: translateY(-2px);
+}
+
+/* Lock the underlying page while the modal is open */
+body.modal-open {
+  overflow: hidden;
+}
+
+@media (max-width: 575px) {
+  .project-modal-meta {
+    gap: 18px 32px;
+  }
 }

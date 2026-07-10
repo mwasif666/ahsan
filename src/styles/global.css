@@ -45,12 +45,13 @@
 }
 
 /* --- Base --- */
-html {
-  scroll-behavior: smooth;
-}
+/* GSAP ScrollSmoother (see App.jsx) owns page scrolling. It drives a
+   transform on #smooth-content, so no native scroll-behavior here (they'd
+   fight), and overflow-x: clip instead of hidden — `hidden` establishes a
+   scroll container that breaks the smoother's fixed wrapper. */
 html,
 body {
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 body {
   background: var(--cream);

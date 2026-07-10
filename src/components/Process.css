@@ -9,11 +9,14 @@
   position: relative;
   max-width: 1282px;
   margin: 0 auto;
-  /* Figma: the vertical line starts ~110px above the grid */
-  padding-top: clamp(56px, 5.7vw, 110px);
+  /* Gap between the eyebrow and the grid (the crosshair lives inside the grid
+     now, so this padding no longer adds any line overhang). */
+  padding-top: clamp(20px, 2vw, 40px);
 }
 
-/* Crosshair — kept above the hover washes so it never gets painted over */
+/* Crosshair lines live inside .process-grid, so the vertical line spans exactly
+   the grid — starting where the cells' colour begins — and stays above the
+   hover washes so it never gets painted over. */
 .process-line-v {
   position: absolute;
   z-index: 2;

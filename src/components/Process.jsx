@@ -56,11 +56,11 @@ export default function Process() {
 
   return (
     <section ref={root} className="process">
-      <span className="eyebrow">How I Work</span>
+      <span className="eyebrow">How It Works</span>
 
       <div className="process-wrap">
-        <span className="process-line-v" aria-hidden="true" />
         <div className="process-grid container-fluid g-0">
+          <span className="process-line-v" aria-hidden="true" />
           <span className="process-line-h" aria-hidden="true" />
           <div className="row g-0">
             {CELLS.map((c) => (

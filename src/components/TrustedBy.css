@@ -32,7 +32,8 @@
   padding-right: clamp(40px, 5vw, 96px);
 }
 .trusted-strip img {
+  height: clamp(36px, 4.1vw, 78px);
+  width: auto;
   filter: grayscale(1);
   opacity: 0.75;
-  height: auto;
 }
