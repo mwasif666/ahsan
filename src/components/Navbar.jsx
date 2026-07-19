@@ -1,14 +1,23 @@
-import { useLayoutEffect, useRef } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 import { gsap } from '../lib/gsap';
 import './Navbar.css';
 
 /**
- * Figma header: centered eyebrow "THE PROBLEM SOLVER" + navy "Get in Touch"
- * pill on the right (Geist, #DFEBF3 on #061E33, radius 6).
- * Sits over the top of the hero and scrolls away with the page.
+ * Header matching the reference screenshot: three centered nav links
+ * (Projects · Get to Know Me · Case Study) with a hamburger toggle on the
+ * right. Sits over the top of the hero and scrolls away with the page.
+ * The hamburger opens a dropdown with the same links — the primary
+ * navigation on small screens, where the inline links are hidden.
  */
+const LINKS = [
+  { label: 'Projects', href: '#projects' },
+  { label: 'Get to Know Me', href: '#who' },
+  { label: 'Case Study', href: '#story' },
+];
+
 export default function Navbar() {
   const root = useRef(null);
+  const [open, setOpen] = useState(false);
 
   // Entrance: slide the bar down on load.
   useLayoutEffect(() => {
@@ -20,10 +29,42 @@ export default function Navbar() {
 
   return (
     <header ref={root} className="site-nav d-flex align-items-center">
-      <span className="nav-label eyebrow">The Problem Solver</span>
-      <a href="#lets-talk" className="nav-cta ms-auto">
-        Get in Touch
-      </a>
+      <nav className="nav-links" aria-label="Primary">
+        {LINKS.map((l) => (
+          <a key={l.href} href={l.href} className="nav-link" onClick={() => setOpen(false)}>
+            {l.label}
+          </a>
+        ))}
+      </nav>
+
+      <button
+        type="button"
+        className={`nav-toggle ms-auto ${open ? 'is-open' : ''}`}
+        aria-label={open ? 'Close menu' : 'Open menu'}
+        aria-expanded={open}
+        onClick={() => setOpen((v) => !v)}
+      >
+        <img
+          src="https://res.cloudinary.com/djyb4mzzk/image/upload/v1784458157/toggleicon_xyjwgd.svg"
+          alt=""
+        />
+      </button>
+
+      {open && (
+        <div className="nav-menu" role="menu">
+          {LINKS.map((l) => (
+            <a
+              key={l.href}
+              href={l.href}
+              className="nav-menu-link"
+              role="menuitem"
+              onClick={() => setOpen(false)}
+            >
+              {l.label}
+            </a>
+          ))}
+        </div>
+      )}
     </header>
   );
 }

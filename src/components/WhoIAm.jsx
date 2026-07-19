@@ -16,6 +16,15 @@ const STATS = [
   { value: 2, suffix: 'X', label: 'Average Growth', cls: 'stat-3' },
 ];
 
+/* Collage photos, in the same left-to-right / top-to-bottom order as the
+   four slots below (i1 → i4). */
+const PHOTOS = [
+  'https://res.cloudinary.com/djyb4mzzk/image/upload/v1784458632/Rectangle_349_e3eau1.png',
+  'https://res.cloudinary.com/djyb4mzzk/image/upload/v1784458632/Rectangle_350_rbgykw.png',
+  'https://res.cloudinary.com/djyb4mzzk/image/upload/v1784458642/Rectangle_351_wosss2.png',
+  'https://res.cloudinary.com/djyb4mzzk/image/upload/v1784458633/Rectangle_352_kcfsf7.png',
+];
+
 export default function WhoIAm() {
   const root = useRef(null);
 
@@ -78,7 +87,7 @@ export default function WhoIAm() {
   }, []);
 
   return (
-    <section ref={root} className="who">
+    <section ref={root} className="who" id="who">
       <div className="who-canvas">
         {/* Vertical hairlines (Figma: 2px #7D858D, stepped depths) */}
         <span className="who-line l1" aria-hidden="true" />
@@ -90,10 +99,10 @@ export default function WhoIAm() {
             radius 4). Drop portraits/behind-the-scenes shots in via CSS
             background-image or an <img>. */}
         <div className="who-media">
-          <div className="who-img i1" />
-          <div className="who-img i2" />
-          <div className="who-img i3" />
-          <div className="who-img i4" />
+          <div className="who-img i1" style={{ backgroundImage: `url(${PHOTOS[0]})` }} />
+          <div className="who-img i2" style={{ backgroundImage: `url(${PHOTOS[1]})` }} />
+          <div className="who-img i3" style={{ backgroundImage: `url(${PHOTOS[2]})` }} />
+          <div className="who-img i4" style={{ backgroundImage: `url(${PHOTOS[3]})` }} />
         </div>
 
         {/* Copy */}
@@ -101,6 +110,10 @@ export default function WhoIAm() {
         <p className="who-copy copy-1">
           For 10+ years I&apos;ve watched founders pour money into marketing that goes nowhere. Not
           because they didn&apos;t try, but because no one set the direction first.
+        </p>
+        <p className="who-copy copy-1b">
+          I fix that. Not by doing every task myself, but by making sure every euro, every hour, and
+          every piece of content is aimed at real growth.
         </p>
         <p className="who-copy copy-2">
           I fix that. Not by doing every task myself, but by making sure every euro, every hour, and

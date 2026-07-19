@@ -8,6 +8,7 @@ import WhoIAm from './components/WhoIAm';
 import Services from './components/Services';
 import Story from './components/Story';
 import Process from './components/Process';
+import CaseStudies from './components/CaseStudies';
 import Projects from './components/Projects';
 import TrustedBy from './components/TrustedBy';
 import Contact from './components/Contact';
@@ -84,6 +85,7 @@ export default function App() {
           <Services />
           <Story />
           <Process />
+          <CaseStudies />
           <Projects />
           <TrustedBy />
           <Contact />

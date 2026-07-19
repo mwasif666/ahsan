@@ -17,13 +17,17 @@ const ICONS = {
   arrow:   'https://res.cloudinary.com/djyb4mzzk/image/upload/v1783598757/Group_278_wsq7nb.png',
 };
 
+/* Positions read off the reference screenshot (top-left corner of each card,
+   as a % of the 1920×1193 hero canvas): pointer far top-left, phone tucked
+   inward, robot lower-left, binoculars top-right, ruler centre-right, arrow
+   right just under the binoculars. */
 const CARDS = [
-  { id: 'c1', src: ICONS.pointer, style: { left: '26.2%', top: '12.3%' } },
-  { id: 'c2', src: ICONS.ruler,   style: { left: '64.8%', top: '33.2%' } },
-  { id: 'c3', src: ICONS.rocket,  style: { left: '30.0%', top: '50.0%' } },
-  { id: 'c4', src: ICONS.phone,   style: { left: '8.2%',  top: '35.5%' } },
-  { id: 'c5', src: ICONS.eyes,    style: { left: '82.1%', top: '16.4%' } },
-  { id: 'c6', src: ICONS.arrow,   style: { left: '82.0%', top: '51.5%' } },
+  { id: 'c1', src: ICONS.pointer, style: { left: '8.8%',  top: '15.5%' } },
+  { id: 'c2', src: ICONS.ruler,   style: { left: '64.9%', top: '34.0%' } },
+  { id: 'c3', src: ICONS.rocket,  style: { left: '14.9%', top: '54.0%' } },
+  { id: 'c4', src: ICONS.phone,   style: { left: '28.2%', top: '26.6%' } },
+  { id: 'c5', src: ICONS.eyes,    style: { left: '82.3%', top: '17.5%' } },
+  { id: 'c6', src: ICONS.arrow,   style: { left: '80.4%', top: '51.0%' } },
 ];
 
 export default function Hero() {

@@ -11,9 +11,15 @@
 .hero-canvas {
   position: relative;
   aspect-ratio: 1920 / 1193;
-  /* Figma: linear-gradient #DBEAF5 → #F9FFBD on a 180°-flipped layer,
-     i.e. pale yellow at the top melting into pale blue. */
-  background: linear-gradient(180deg, var(--yellow) 0%, var(--blue-150) 100%);
+  /* Saturated sky-blue at the top (--blue-sky #C1E1FF) holding through the
+     upper third, then melting through a soft mint into pale yellow — which
+     the bottom fade blends on into the cream page. */
+  background: linear-gradient(
+    180deg,
+    var(--blue-sky) 0%,
+    var(--blue-sky) 16%,
+    var(--yellow) 100%
+  );
   overflow: hidden;
 }
 

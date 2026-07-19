@@ -59,8 +59,9 @@
   line-height: 1.06;
   color: var(--navy);
 }
-.copy-1 { left: 39.17%; top: 15.03%; }
-.copy-2 { left: 61.93%; top: 39.6%; }
+.copy-1  { left: 39.17%; top: 15.03%; }
+.copy-1b { left: 39.17%; top: 28%; }
+.copy-2  { left: 61.93%; top: 39.6%; }
 
 /* --- Staircase stats (170px Inter 900 + 40px uppercase labels) --- */
 .who-stats { display: contents; }
@@ -111,6 +112,7 @@
   .who-eyebrow { text-align: center; order: 1; }
   .copy-1 { order: 2; }
   .copy-2 { order: 3; }
+  .copy-1b { display: none; } /* duplicate of copy-2 — desktop-only collage */
   .who-copy { max-width: 520px; line-height: 1.35; }
 
   .who-media {

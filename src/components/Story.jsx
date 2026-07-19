@@ -47,7 +47,7 @@ export default function Story() {
   }, []);
 
   return (
-    <section ref={root} className="story">
+    <section ref={root} className="story" id="story">
       <span className="eyebrow">My Story</span>
       <div className="story-copy">
         <p><Words text={P1} /></p>

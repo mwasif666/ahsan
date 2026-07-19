@@ -9,49 +9,90 @@
   padding: clamp(14px, 2.2vw, 42px) clamp(16px, 2.9vw, 56px);
 }
 
-/* Centered "THE PROBLEM SOLVER" label — #657688, letterspaced,
-   smaller than the section eyebrows per the latest design */
-.site-nav .nav-label {
+/* Three centered nav links: PROJECTS · GET TO KNOW ME · CASE STUDY */
+.nav-links {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: clamp(20px, 3vw, 68px);
   white-space: nowrap;
-  margin: 0;
+}
+.nav-link {
+  color: var(--gray-1);
   font-size: var(--fs-nav);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: color 0.25s ease;
+}
+.nav-link:hover,
+.nav-link:focus-visible {
+  color: var(--navy);
+  outline: none;
+}
+.nav-link:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 6px;
 }
 
-/* "Get in Touch" — navy bg, #DFEBF3 Geist, radius 6 */
-.nav-cta {
-  background: var(--navy);
-  color: var(--blue-100);
-  font-family: var(--font-alt);
-  font-weight: 400;
-  font-size: var(--fs-nav); /* 24px at 1920 */
-  line-height: 1;
-  padding: clamp(7px, 0.65vw, 12.5px) clamp(12px, 1.3vw, 25px);
-  border-radius: 6px;
-  transition: transform 0.3s ease, background-color 0.3s ease;
-  will-change: transform;
+/* Hamburger toggle — SVG icon on the far right */
+.nav-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(34px, 2.4vw, 46px);
+  height: clamp(34px, 2.4vw, 46px);
+  padding: 0;
+  background: none;
+  border: 0;
+  cursor: pointer;
 }
-.nav-cta:hover {
-  background: #0d3252;
-  color: var(--blue-100);
-  transform: translateY(-2px);
+.nav-toggle img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
-.nav-cta:active {
-  transform: translateY(0);
-}
-.nav-cta:focus-visible {
+.nav-toggle:focus-visible {
   outline: 2px solid var(--navy);
-  outline-offset: 3px;
+  outline-offset: 4px;
 }
 
-@media (max-width: 575px) {
-  .site-nav .nav-label {
-    font-size: 10px;
-    letter-spacing: 0.32em;
-    text-indent: 0.32em;
-    left: clamp(16px, 4vw, 24px);
-    transform: none;
+/* Dropdown opened by the hamburger */
+.nav-menu {
+  position: absolute;
+  top: 100%;
+  right: clamp(16px, 2.9vw, 56px);
+  margin-top: clamp(6px, 0.6vw, 12px);
+  display: flex;
+  flex-direction: column;
+  min-width: clamp(180px, 16vw, 260px);
+  padding: 10px;
+  background: var(--cream);
+  border-radius: 14px;
+  box-shadow: 0 18px 44px rgba(6, 30, 51, 0.14);
+  z-index: 101;
+}
+.nav-menu-link {
+  padding: clamp(10px, 0.9vw, 16px) clamp(12px, 1vw, 18px);
+  color: var(--navy);
+  font-size: clamp(13px, 1vw, 19px);
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 9px;
+  transition: background 0.2s ease;
+}
+.nav-menu-link:hover,
+.nav-menu-link:focus-visible {
+  background: var(--blue-100);
+  outline: none;
+}
+
+/* ---------- Mobile: inline links collapse into the hamburger menu ---------- */
+@media (max-width: 767px) {
+  .nav-links {
+    display: none;
   }
 }

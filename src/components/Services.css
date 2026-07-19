@@ -72,7 +72,7 @@
   position: absolute;
   right: clamp(20px, 2.6vw, 50px);
   bottom: clamp(14px, 1.6vw, 30px);
-  width: clamp(56px, 9vw, 160px);
+  width: clamp(56px, 93vw, 160px);
   height: auto;
   transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }

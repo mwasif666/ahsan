@@ -1,0 +1,170 @@
+/* ============ CASE STUDIES ============ */
+
+.case-studies {
+  background: var(--cream);
+  padding: clamp(40px, 5.2vw, 100px) 0;
+}
+
+/* Desktop layout: left/right split at 1920×1080 aspect ratio */
+.cs-canvas {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 0.55fr) minmax(0, 1fr);
+  gap: clamp(42px, 4.2vw, 80px);
+  align-items: start;
+  padding: 0 var(--page-pad);
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+/* Left: Heading + Description */
+.cs-content {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(20px, 1.7vw, 32px);
+}
+
+.cs-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: clamp(64px, 9.4vw, 180px);
+  font-weight: 500;
+  line-height: 0.88;
+  letter-spacing: -0.065em;
+  color: var(--navy);
+  margin: 0;
+}
+
+.cs-heading span {
+  display: block;
+}
+
+.cs-description {
+  font-size: var(--fs-body);
+  line-height: 1.08;
+  color: var(--navy);
+  max-width: 100%;
+  margin: 0;
+}
+
+/* Right: Stacked case study cards */
+.cs-cards {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(14px, 1.25vw, 24px);
+}
+
+.case-card {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: clamp(12px, 1vw, 20px);
+  aspect-ratio: 1090 / 564;
+  background: #e0e0e0;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  text-decoration: none;
+  will-change: transform;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
+}
+.case-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.case-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 48px rgba(6, 30, 51, 0.16);
+}
+
+/* External link icon (top-right corner) */
+.card-link-icon {
+  position: absolute;
+  top: clamp(12px, 1.2vw, 20px);
+  right: clamp(12px, 1.2vw, 20px);
+  width: clamp(36px, 3vw, 48px);
+  height: clamp(36px, 3vw, 48px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 8px;
+  color: var(--navy);
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease;
+}
+.case-card:hover .card-link-icon {
+  background: rgba(255, 255, 255, 1);
+  transform: scale(1.08);
+}
+.card-link-icon svg {
+  width: 60%;
+  height: 60%;
+  stroke: currentColor;
+}
+
+/* ---------- Tablet / mobile: stack vertically ---------- */
+@media (max-width: 1024px) {
+  .cs-canvas {
+    grid-template-columns: 1fr;
+    gap: clamp(32px, 3vw, 56px);
+    padding: 0 var(--page-pad);
+  }
+
+  .cs-heading {
+    font-size: clamp(64px, 12vw, 108px);
+  }
+
+  .cs-description {
+    max-width: 100%;
+    font-size: clamp(16px, 2.2vw, 22px);
+    line-height: 1.2;
+  }
+
+  .cs-cards {
+    gap: clamp(16px, 1.5vw, 28px);
+  }
+
+  .case-card {
+    border-radius: clamp(8px, 0.8vw, 14px);
+  }
+}
+
+@media (max-width: 640px) {
+  .case-studies {
+    padding: 32px 0;
+  }
+
+  .cs-canvas {
+    gap: 24px;
+  }
+
+  .cs-heading {
+    font-size: clamp(56px, 18vw, 86px);
+  }
+
+  .cs-description {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .cs-cards {
+    gap: 16px;
+  }
+
+  .case-card {
+    border-radius: 8px;
+  }
+
+  .card-link-icon {
+    width: 36px;
+    height: 36px;
+  }
+}
